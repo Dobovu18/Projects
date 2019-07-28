@@ -1,0 +1,11 @@
+These are my Year 3 module choices:
+    --Functional Analysis
+    --Introduction to Topology
+    --Theory of PDEs
+    --Electrodynamics
+    --Quantum Mechanics
+    --Complex Analysis
+    --Differential Geometry
+	--General Relativity
+	--Dynamical Systems
+	--Algebraic Topology
