@@ -171,9 +171,11 @@ for i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
 ans = eval(input("Enter an arithmetic expression: "))
 print(ans) #eval can evaluate entire arithmetic expressions
 
+"""
+
 x, y = eval(input("Enter a number: ")), eval(input("Enter another number: "))
 
-sum_, diff, prod, quod = x + y, x - y, x * y, x / y
+sum_, diff, prod, quod, expo = x + y, x - y, x * y, x / y, x**y ## ** (double asterisk) is for exponentiation
 
 oper = input("Enter an operation: ")
 #elif is else if
@@ -185,8 +187,12 @@ elif(oper == '-'):
     print("%.2f %s %.2f =  %.2f" %(x, oper, y, diff))
 elif(oper == '/'):
     print("%.2f %s %.2f =  %.2f" %(x, oper, y, quod))
+elif(oper == '^'):
+    print("%.2f %s %.2f =  %.2f" %(x, oper, y, expo))
 else:
     print("Enter a valid arithmetic operation")
+
+"""
 """
 
 #age = input("How old are you?")

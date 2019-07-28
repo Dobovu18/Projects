@@ -44,10 +44,11 @@ for i in range(11):
 
 
 #some lists
+#We can also index lists from right to left using negative numbers
 the_count = [1, 2, 3, 4, 5]
 fruits = ['apples', 'oranges', 'pears', 'apricots']
 change = [1, 'pennies', 2, 'dimes', 3, 'quarters']
-
+print("A test of indexing arrays from the right: ", fruits[-1]) #Prints apricots, the first entry from the right
 #for loops can only iterate over a predefined set of objects
 for number in the_count:
     print("This is count %d" % number)
@@ -140,7 +141,25 @@ if not state:
 city = cities.get('Texas', 'Does not exist')
 print("The city for the state 'TX' is: %s" % city)
 
+def username(*name):
+    #generates a username given a forename and surname
+    forename, surname = name
+    return forename[0] + surname[:7]
+
+print(username("Donnell", "Obovu"))
+
+
 #A list is an ordered list of items.
 #A dictionary is for matching some items (called keys) with other items, called values.
 #dict =  {key1 : value1, ..., keyN : valueN}
 #Use dictionaries whenever you have to look up another value
+
+#Many of the operations we do to strings, like concatenation, repeated addition, etc
+#Can be done to lists.
+#E.g:   [1, 2] + [3, 4] == [1, 2, 3, 4]
+#       [1, 2] * 3 == [1, 2, 1, 2, 1, 2]
+#       grades = ['A', 'B', 'C', 'D', 'E', 'F']
+#       grades[0] == 'A'
+#       grades[2: 4] == ['C', 'D']
+#       len(grades) = 6
+#So lists are more general than strings, and string a a specific type of list
