@@ -148,6 +148,28 @@ def username(*name):
 
 print(username("Donnell", "Obovu"))
 
+print(ord("a"), ord("A"), chr(97), chr(90), chr(960))
+
+def txt2num(msg):
+    numstr = ""
+    for ch in msg:
+        numstr += "%d"
+        numstr %= ord(ch)
+        numstr += " "
+    return numstr
+
+def num2txt(numstr):
+    chars = []
+    for num in numstr.split(): #Splits the string at every occurrance of a space
+        #split(<char>) splits the string at every occurrance of char in the string.
+        #split makes an array of substrings from the split strings
+        chars.append(chr(int(num))) #using append and treating strings as lists is more efficient
+    return "".join(chars)
+
+
+convert_msg = input("Enter a string to be converted to a number: ")
+print(txt2num(convert_msg))
+print(num2txt(txt2num(convert_msg)))
 
 #A list is an ordered list of items.
 #A dictionary is for matching some items (called keys) with other items, called values.
@@ -163,3 +185,28 @@ print(username("Donnell", "Obovu"))
 #       grades[2: 4] == ['C', 'D']
 #       len(grades) = 6
 #So lists are more general than strings, and string a a specific type of list
+
+
+s = "hello, I camE here For an ArguMent"
+
+print(s.capitalize()) #Makes first letter capital, others in lower
+print(s.lower()) #Makes all lower case
+print(s.title()) #First letter of each word is upper case
+print(s.upper()) # All caps
+print(s.replace("I", "you"))#replaces first substring with a new string
+print(s.center(30))
+print(s.center(50))
+print(s.count('e')) #counts the number of non-overlapping occurrances of this substring
+print(s.find('s')) #finds the position of this substring
+print(" ".join(["Number", "one,", "the", "Larch"]))
+print("SPAM".join(["Number", "one,", "the", "Larch"]))
+
+total = 1.5
+print("The total value of your change is £{0:0.2f}".format(total))
+#<template-string>.format(<values>)
+name, surname, prize = "Donnell", "Obovu", 1000000.50
+print("Hello {0} {1}, you have recieved {2:0.2f} notifications!".format(name, surname, prize))
+
+print("left justification: {0:<5}".format("Hi!"))
+print("right justification: {0:>5}".format("Hi!"))
+print("centred: {0:^5}".format("Hi!"))
