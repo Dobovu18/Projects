@@ -1,3 +1,4 @@
+
 def print_two(*args):
     arg1, arg2 = args
     print("arg1: %r, arg2: %r" %(arg1, arg2))
@@ -210,3 +211,4 @@ print("Hello {0} {1}, you have recieved {2:0.2f} notifications!".format(name, su
 print("left justification: {0:<5}".format("Hi!"))
 print("right justification: {0:>5}".format("Hi!"))
 print("centred: {0:^5}".format("Hi!"))
+

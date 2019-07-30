@@ -7,6 +7,7 @@ Create a new date string in form Day Month, Year
 Output new date string
 """
 
+def dateConvert(dateStr):
     monthList = [
         "January",
         "February",
