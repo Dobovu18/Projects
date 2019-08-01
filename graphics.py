@@ -160,7 +160,7 @@ __version__ = "5.0"
 #     Added ability to set text atttributes.
 #     Added Entry boxes.
 
-import time, os, sys
+import time, os, sys, math
 
 try:  # import as appropriate for 2.x vs. 3.x
    import tkinter as tk
@@ -569,6 +569,12 @@ class Point(GraphicsObject):
         other = Point(self.x,self.y)
         other.config = self.config.copy()
         return other
+
+    def dist(self, p):
+        #Added to give distances between points
+        x_dist2 = (self.x - p.getX())**2
+        y_dist2 = (self.y - p.getY())**2
+        return math.sqrt(x_dist2 + y_dist2)
                 
     def getX(self): return self.x
     def getY(self): return self.y
