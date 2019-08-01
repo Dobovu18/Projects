@@ -229,7 +229,7 @@ def processData(filename):
         file_read = str(file.read())
         print("The file %s has been accessed" % filename)
         file.close()
-        data = file_read.split("\n") 
+        data = file_read.split("\n", " ") 
         count, n = 1, 0 #n is the number of (valid) data values, count is what line I am on in the file
         exp_val, std_dev = 0.0, 0.0
 
