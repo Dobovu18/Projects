@@ -1,3 +1,5 @@
+from math import *
+
 def print_two(*args):
     arg1, arg2 = args
     print("arg1: %r, arg2: %r" %(arg1, arg2))
@@ -167,9 +169,9 @@ def num2txt(numstr):
     return "".join(chars)
 
 
-convert_msg = input("Enter a string to be converted to a number: ")
-print(txt2num(convert_msg))
-print(num2txt(txt2num(convert_msg)))
+#convert_msg = input("Enter a string to be converted to a number: ")
+#print(txt2num(convert_msg))
+#print(num2txt(txt2num(convert_msg)))
 
 #A list is an ordered list of items.
 #A dictionary is for matching some items (called keys) with other items, called values.
@@ -211,3 +213,48 @@ print("left justification: {0:<5}".format("Hi!"))
 print("right justification: {0:>5}".format("Hi!"))
 print("centred: {0:^5}".format("Hi!"))
 
+
+def processData(filename):
+    """
+    This function will produce summary data such as:
+        -Standard deviation
+        -Expected Value
+        -Total number of data points
+    """
+
+    try:
+        #Reading in the file and storing each number as a string in an array
+        file = open(filename, 'r')
+        file_read = str(file.read())
+        print("The file %s has been accessed" % filename)
+        file.close()
+        data = file_read.split("\n") 
+        count, n = 1, 0 #n is the number of (valid) data values, count is what line I am on in the file
+        exp_val, std_dev = 0.0, 0.0
+
+        #calculating the expected value and standard deviation
+        for number in data:
+            try:
+                exp_val += float(number)
+                std_dev += float(number)**2
+                count += 1
+                n += 1
+            except ValueError:
+                #Just in case non-numerical data has been found, I notify the user, and ignore the value, continuing with calculation
+                print("A non-numerical entry was found on line %d. The entry was not included in calculation" %(count))
+                count += 1
+            exp_val /= n
+            std_dev = (((std_dev) / n) - exp_val**2)
+        return n, exp_val, std_dev
+    except IOError:
+        #In case the file cannot be found
+        print("Could not read or find the file %s" % filename)
+        return None, None, None
+
+print("""
+The sample size of the data is: %d
+The expected value of the data set is: %f
+The standard deviation of the data set is: %f
+""" % processData("numbers.txt"))
+
+badValues = processData("NonExistantFile.txt")
