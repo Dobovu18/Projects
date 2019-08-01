@@ -214,6 +214,7 @@ print("right justification: {0:>5}".format("Hi!"))
 print("centred: {0:^5}".format("Hi!"))
 
 
+
 def processData(filename):
     """
     This function will produce summary data such as:
@@ -236,25 +237,74 @@ def processData(filename):
         for number in data:
             try:
                 exp_val += float(number)
-                std_dev += float(number)**2
-                count += 1
+                std_dev += float(number) ** 2
                 n += 1
-            except ValueError:
-                #Just in case non-numerical data has been found, I notify the user, and ignore the value, continuing with calculation
-                print("A non-numerical entry was found on line %d. The entry was not included in calculation" %(count))
                 count += 1
-            exp_val /= n
-            std_dev = (((std_dev) / n) - exp_val**2)
+            except ValueError:
+                print("A non-numerical entry was found on line %d" % count)
+                count += 1
+
+        exp_val /= n
+        std_dev = sqrt((std_dev / n) - exp_val ** 2)
         return n, exp_val, std_dev
     except IOError:
         #In case the file cannot be found
         print("Could not read or find the file %s" % filename)
         return None, None, None
 
+    """
+    For some reason, the values in processData1 differ to that of processData2.
+    processData2 results are correct, whilst processData1 for some reason is incorrect.
+
+    A resolution has been reached, the indenting in processData1 wasn't done properly
+    the >> exp_val = n << and >> std_dev = sqrt((std_dev / n) - exp_val ** 2) lines were indented in the for loop
+    whereas they belong outside the for loop
+    """
+
+
+def processData2(filename):
+    """
+    Another way to process data from a file.
+    This method bypasses having to write all the data as a massive string
+    and then having to split the string
+    """
+    try:
+        file = open(filename)
+        print("The file %s has been accessed" % filename)
+        n, count = 0, 1
+        exp_val, std_dev = 0.0, 0.0
+        for numbers in file:
+            try:
+                exp_val += float(numbers)
+                std_dev += float(numbers) ** 2
+                n += 1
+                count += 1
+            except ValueError:
+                print("A non-numerical entry was found on line %d" % count)
+                count += 1
+    
+        file.close()
+        print(exp_val, std_dev)
+        exp_val /= n
+        std_dev = sqrt((std_dev / n) - exp_val ** 2)
+
+        return n, exp_val, std_dev
+    except IOError:
+        print("Could not read or find the file %s" % filename)
+        return None, None, None
+
+
+
 print("""
+PROCESSDATA1:
 The sample size of the data is: %d
 The expected value of the data set is: %f
 The standard deviation of the data set is: %f
 """ % processData("numbers.txt"))
 
-badValues = processData("NonExistantFile.txt")
+print("""
+PROCESSDATA2:
+The sample size of the data is: %d
+The expected value of the data set is: %f
+The standard deviation of the data set is: %f
+""" % processData2("numbers.txt"))
