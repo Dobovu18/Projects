@@ -6,8 +6,8 @@ import math as m
 x = np.linspace(0, 2 * m.pi, 100)
 y = np.sin(x)
 
-#plot = plt.plot(x,y)
-#plt.show()
+plot = plt.plot(x,y)
+plt.show()
 
 #By default, open(filename) opens a reading version of the file
 

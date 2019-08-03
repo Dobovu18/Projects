@@ -150,8 +150,10 @@ def username(*name):
 
 print(username("Donnell", "Obovu"))
 
+#Converting characters to numbers (unicode) and back again
 print(ord("a"), ord("A"), chr(97), chr(90), chr(960))
 
+#Converting text to a string into a sequence of integers
 def txt2num(msg):
     numstr = ""
     for ch in msg:
@@ -160,6 +162,7 @@ def txt2num(msg):
         numstr += " "
     return numstr
 
+#And back again
 def num2txt(numstr):
     chars = []
     for num in numstr.split(): #Splits the string at every occurrance of a space

@@ -113,3 +113,12 @@ def display(player1, player2):
     """ %(player1.getName(), player1.getWins(), player2.getName(), player2.getWins()))
 
 main()
+
+"""
+Possible further/related projects:
+    --Racquetball tournament simulator:
+        >Takes n, the number of rounds, and 2^n players and their skill levels
+        >Outputs the winners of each stage of the tournament
+    --Other sports simulators:
+        >E.g Tennis, football, boxing
+"""
